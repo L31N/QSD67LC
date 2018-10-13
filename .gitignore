@@ -35,7 +35,10 @@ eagle.epf
 *.gpi
 *.pls
 *.ger
+<<<<<<< HEAD
 *.gpi
+=======
+>>>>>>> f0ce15ff1feb5f83c0c033f8302b261a1d23078a
 *.xln
 
 *.drd
