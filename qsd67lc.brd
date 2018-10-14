@@ -2080,6 +2080,35 @@ diameter 5.6 mm, horizontal, grid 15.24 mm</description>
 <rectangle x1="-5.969" y1="-0.635" x2="-5.08" y2="0.635" layer="21"/>
 <rectangle x1="5.08" y1="-0.635" x2="5.969" y2="0.635" layer="21"/>
 </package>
+<package name="DO35Z10" urn="urn:adsk.eagle:footprint:43098/1" library_version="3">
+<description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
+diameter 2 mm, horizontal, grid 10.16mm</description>
+<wire x1="5.08" y1="0" x2="4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-5.08" y1="0" x2="-4.191" y2="0" width="0.508" layer="51"/>
+<wire x1="-0.635" y1="0" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="0.635" x2="1.016" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="-0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.524" y2="0" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="1.016" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0" x2="0" y2="-0.635" width="0.1524" layer="21"/>
+<wire x1="0.254" y1="0.635" x2="0" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.635" x2="0" y2="0" width="0.1524" layer="21"/>
+<wire x1="2.032" y1="1.016" x2="2.286" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="0.762" x2="-2.032" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.286" y1="-0.762" x2="-2.032" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.032" y1="-1.016" x2="2.286" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.286" y1="0.762" x2="2.286" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-2.286" y1="0.762" x2="-2.286" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="1.016" x2="2.032" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-2.032" y1="-1.016" x2="2.032" y2="-1.016" width="0.1524" layer="21"/>
+<pad name="C" x="-5.08" y="0" drill="0.8128" shape="long"/>
+<pad name="A" x="5.08" y="0" drill="0.8128" shape="long"/>
+<text x="-2.286" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.286" y="-2.54" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-1.905" y1="-1.016" x2="-1.397" y2="1.016" layer="21"/>
+<rectangle x1="2.286" y1="-0.254" x2="4.191" y2="0.254" layer="21"/>
+<rectangle x1="-4.191" y1="-0.254" x2="-2.286" y2="0.254" layer="21"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="DO201T15" urn="urn:adsk.eagle:package:43354/1" type="box" library_version="2">
@@ -2087,6 +2116,13 @@ diameter 5.6 mm, horizontal, grid 15.24 mm</description>
 diameter 5.6 mm, horizontal, grid 15.24 mm</description>
 <packageinstances>
 <packageinstance name="DO201T15"/>
+</packageinstances>
+</package3d>
+<package3d name="DO35Z10" urn="urn:adsk.eagle:package:43342/1" type="box" library_version="3">
+<description>DIODE
+diameter 2 mm, horizontal, grid 10.16mm</description>
+<packageinstances>
+<packageinstance name="DO35Z10"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -2542,6 +2578,10 @@ design rules under a new name.</description>
 <attribute name="SPICEPREFIX" value="C" x="30.48" y="76.2" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="31.75" y="73.66" size="1.27" layer="28" rot="MR0"/>
 </element>
+<element name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" package="DO35Z10" package3d_urn="urn:adsk.eagle:package:43342/1" value="BZX55C3V3" x="-106.68" y="-208.28">
+<attribute name="NAME" x="-108.966" y="-207.01" size="1.27" layer="25" ratio="10"/>
+<attribute name="VALUE" x="-108.966" y="-210.82" size="1.27" layer="27" ratio="10"/>
+</element>
 </elements>
 <signals>
 <signal name="N$2">
@@ -2588,6 +2628,7 @@ design rules under a new name.</description>
 <contactref element="C11" pad="2"/>
 <contactref element="C5" pad="2"/>
 <contactref element="C6" pad="2"/>
+<contactref element="D2" pad="A"/>
 <wire x1="63.82" y1="69.15" x2="65.07" y2="70.9" width="0" layer="19" extent="1-1"/>
 <wire x1="62.55" y1="66.04" x2="63.82" y2="69.15" width="0" layer="19" extent="1-1"/>
 <wire x1="56.2" y1="63.5" x2="62.55" y2="66.04" width="0" layer="19" extent="1-1"/>
@@ -2616,6 +2657,7 @@ design rules under a new name.</description>
 <wire x1="11.27" y1="27.34" x2="18.1" y2="35.56" width="0" layer="19" extent="16-16"/>
 <wire x1="-59.37" y1="-3.81" x2="11.27" y2="27.34" width="0" layer="19" extent="1-1"/>
 <wire x1="-59.37" y1="-20.32" x2="-59.37" y2="-3.81" width="0" layer="19" extent="1-1"/>
+<wire x1="-101.6" y1="-208.28" x2="-59.37" y2="-20.32" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="RXD">
 <contactref element="IC1" pad="2"/>
@@ -2741,8 +2783,10 @@ design rules under a new name.</description>
 <contactref element="IC1" pad="5"/>
 <contactref element="R13" pad="1"/>
 <contactref element="R11" pad="2"/>
+<contactref element="D2" pad="C"/>
 <wire x1="33.02" y1="35.24" x2="31.75" y2="38.1" width="0" layer="19" extent="16-16"/>
 <wire x1="30.48" y1="35.24" x2="33.02" y2="35.24" width="0" layer="19" extent="16-16"/>
+<wire x1="-111.76" y1="-208.28" x2="30.48" y2="35.24" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="MODE_KEY">
 <contactref element="U1" pad="34"/>
