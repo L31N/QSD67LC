@@ -26629,8 +26629,8 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="U2" library="MicroUSB" deviceset="USB" device="&quot;&quot;"/>
 <part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="LED4" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0805" package3d_urn="urn:adsk.eagle:package:15830/1"/>
-<part name="LED5" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0805" package3d_urn="urn:adsk.eagle:package:15830/1"/>
+<part name="LED4" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0805" package3d_urn="urn:adsk.eagle:package:15830/1" value="green"/>
+<part name="LED5" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="SML0805" package3d_urn="urn:adsk.eagle:package:15830/1" value="orange"/>
 <part name="R18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="270R"/>
 <part name="R19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="270R"/>
 <part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E2.5-5" package3d_urn="urn:adsk.eagle:package:23344/1"/>
@@ -27939,14 +27939,16 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <wire x1="15.24" y1="0" x2="60.96" y2="0" width="0.1524" layer="91"/>
 <pinref part="R18" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="10.16" x2="60.96" y2="0" width="0.1524" layer="91"/>
+<label x="22.86" y="0" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$25" class="0">
+<net name="USB_TX_LED" class="0">
 <segment>
 <pinref part="IC5" gate="1" pin="CBUS1"/>
 <wire x1="15.24" y1="-2.54" x2="68.58" y2="-2.54" width="0.1524" layer="91"/>
 <pinref part="R19" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="10.16" x2="68.58" y2="-2.54" width="0.1524" layer="91"/>
+<label x="22.86" y="-2.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VCCIO_USB" class="0">
@@ -28028,14 +28030,14 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <junction x="40.64" y="-38.1"/>
 </segment>
 </net>
-<net name="RS232_RX" class="0">
+<net name="RXD_RS232" class="0">
 <segment>
 <pinref part="IC6" gate="G$1" pin="OUTA"/>
 <wire x1="53.34" y1="-43.18" x2="27.94" y2="-43.18" width="0.1524" layer="91"/>
 <label x="27.94" y="-43.18" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="RS232_TX" class="0">
+<net name="TXD_RS232" class="0">
 <segment>
 <pinref part="IC6" gate="G$1" pin="INB"/>
 <wire x1="53.34" y1="-45.72" x2="27.94" y2="-45.72" width="0.1524" layer="91"/>
