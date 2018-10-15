@@ -26640,6 +26640,7 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
 <part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 </parts>
 <sheets>
 <sheet>
@@ -26901,6 +26902,10 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <instance part="GND22" gate="1" x="208.28" y="5.08">
 <attribute name="VALUE" x="205.74" y="2.54" size="1.778" layer="96"/>
 </instance>
+<instance part="C19" gate="G$1" x="-48.26" y="-15.24">
+<attribute name="NAME" x="-46.736" y="-14.859" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-46.736" y="-19.939" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -26946,12 +26951,16 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <junction x="-40.64" y="-35.56"/>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="-58.42" y1="-20.32" x2="-58.42" y2="-35.56" width="0.1524" layer="91"/>
-<wire x1="-58.42" y1="-35.56" x2="-50.8" y2="-35.56" width="0.1524" layer="91"/>
+<wire x1="-58.42" y1="-35.56" x2="-53.34" y2="-35.56" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="GND"/>
-<wire x1="-50.8" y1="-35.56" x2="-40.64" y2="-35.56" width="0.1524" layer="91"/>
-<wire x1="-25.4" y1="25.4" x2="-50.8" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="-50.8" y1="25.4" x2="-50.8" y2="-35.56" width="0.1524" layer="91"/>
-<junction x="-50.8" y="-35.56"/>
+<wire x1="-53.34" y1="-35.56" x2="-48.26" y2="-35.56" width="0.1524" layer="91"/>
+<wire x1="-48.26" y1="-35.56" x2="-40.64" y2="-35.56" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="25.4" x2="-53.34" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="-53.34" y1="25.4" x2="-53.34" y2="-35.56" width="0.1524" layer="91"/>
+<junction x="-53.34" y="-35.56"/>
+<pinref part="C19" gate="G$1" pin="2"/>
+<wire x1="-48.26" y1="-20.32" x2="-48.26" y2="-35.56" width="0.1524" layer="91"/>
+<junction x="-48.26" y="-35.56"/>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="1"/>
@@ -27141,6 +27150,9 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <wire x1="-25.4" y1="22.86" x2="-27.94" y2="22.86" width="0.1524" layer="91"/>
 <junction x="-48.26" y="20.32"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
+<pinref part="C19" gate="G$1" pin="1"/>
+<wire x1="-48.26" y1="-5.08" x2="-48.26" y2="-12.7" width="0.1524" layer="91"/>
+<junction x="-48.26" y="-5.08"/>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
