@@ -26543,7 +26543,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </classes>
 <parts>
 <part name="H1" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="3.0" package3d_urn="urn:adsk.eagle:package:14277/1"/>
-<part name="H2" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="3.0" package3d_urn="urn:adsk.eagle:package:14277/1"/>
 <part name="H3" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="3.0" package3d_urn="urn:adsk.eagle:package:14277/1"/>
 <part name="H4" library="holes" library_urn="urn:adsk.eagle:library:237" deviceset="MOUNT-HOLE" device="3.0" package3d_urn="urn:adsk.eagle:package:14277/1"/>
 <part name="IC1" library="atmel" library_urn="urn:adsk.eagle:library:105" deviceset="MEGA8-P" device="" package3d_urn="urn:adsk.eagle:package:4320/1"/>
@@ -26561,7 +26560,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
-<part name="S2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
 <part name="U1" library="Bluetooth HC-05" deviceset="HC_05" device=""/>
 <part name="+3V2" library="hcontrol" deviceset="+3V3" device=""/>
 <part name="+3V3" library="hcontrol" deviceset="+3V3" device=""/>
@@ -26573,7 +26571,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
 <part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
 <part name="GND4" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
 <part name="S1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
 <part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -26640,6 +26637,9 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
+<part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -26800,12 +26800,12 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <instance part="GND2" gate="1" x="-40.64" y="-40.64">
 <attribute name="VALUE" x="-43.18" y="-43.18" size="1.778" layer="96"/>
 </instance>
-<instance part="SV1" gate="1" x="83.82" y="-25.4">
-<attribute name="VALUE" x="80.01" y="-33.02" size="1.778" layer="96"/>
-<attribute name="NAME" x="80.01" y="-19.558" size="1.778" layer="95"/>
+<instance part="SV1" gate="1" x="78.74" y="-27.94">
+<attribute name="VALUE" x="74.93" y="-35.56" size="1.778" layer="96"/>
+<attribute name="NAME" x="74.93" y="-22.098" size="1.778" layer="95"/>
 </instance>
-<instance part="GND1" gate="1" x="111.76" y="-33.02">
-<attribute name="VALUE" x="109.22" y="-35.56" size="1.778" layer="96"/>
+<instance part="GND1" gate="1" x="106.68" y="-38.1">
+<attribute name="VALUE" x="104.14" y="-40.64" size="1.778" layer="96"/>
 </instance>
 <instance part="R1" gate="G$1" x="-58.42" y="40.64" rot="R90">
 <attribute name="NAME" x="-59.9186" y="36.83" size="1.778" layer="95" rot="R90"/>
@@ -26839,19 +26839,11 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <attribute name="NAME" x="62.23" y="24.3586" size="1.778" layer="95"/>
 <attribute name="VALUE" x="62.23" y="19.558" size="1.778" layer="96"/>
 </instance>
-<instance part="S2" gate="1" x="116.84" y="25.4">
-<attribute name="NAME" x="110.49" y="22.86" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="113.03" y="28.575" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="+3V2" gate="G$1" x="-58.42" y="53.34">
 <attribute name="VALUE" x="-60.96" y="48.26" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V3" gate="G$1" x="83.82" y="53.34">
 <attribute name="VALUE" x="81.28" y="48.26" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="R5" gate="G$1" x="119.38" y="5.08" rot="R90">
-<attribute name="NAME" x="117.8814" y="1.27" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="122.682" y="1.27" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="S1" gate="1" x="127" y="25.4">
 <attribute name="NAME" x="120.65" y="22.86" size="1.778" layer="95" rot="R90"/>
@@ -26898,6 +26890,16 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </instance>
 <instance part="GND19" gate="1" x="170.18" y="5.08">
 <attribute name="VALUE" x="167.64" y="2.54" size="1.778" layer="96"/>
+</instance>
+<instance part="R14" gate="G$1" x="208.28" y="35.56" rot="R90">
+<attribute name="NAME" x="206.7814" y="31.75" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="211.582" y="31.75" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="+3V9" gate="G$1" x="208.28" y="53.34">
+<attribute name="VALUE" x="205.74" y="48.26" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND22" gate="1" x="208.28" y="5.08">
+<attribute name="VALUE" x="205.74" y="2.54" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -26953,19 +26955,14 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="1"/>
-<wire x1="91.44" y1="-27.94" x2="111.76" y2="-27.94" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="-30.48" x2="106.68" y2="-30.48" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="111.76" y1="-27.94" x2="111.76" y2="-30.48" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="-30.48" x2="106.68" y2="-35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R6" gate="G$1" pin="1"/>
 <pinref part="GND5" gate="1" pin="GND"/>
-<wire x1="129.54" y1="0" x2="129.54" y2="-2.54" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="129.54" y1="-2.54" x2="129.54" y2="-5.08" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="0" x2="119.38" y2="-2.54" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="-2.54" x2="129.54" y2="-2.54" width="0.1524" layer="91"/>
-<junction x="129.54" y="-2.54"/>
+<wire x1="129.54" y1="0" x2="129.54" y2="-5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="1"/>
@@ -27010,8 +27007,8 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="6"/>
-<wire x1="76.2" y1="-22.86" x2="60.96" y2="-22.86" width="0.1524" layer="91"/>
-<label x="60.96" y="-22.86" size="1.778" layer="95"/>
+<wire x1="71.12" y1="-25.4" x2="55.88" y2="-25.4" width="0.1524" layer="91"/>
+<label x="55.88" y="-25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCK" class="0">
@@ -27022,15 +27019,15 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="4"/>
-<wire x1="76.2" y1="-25.4" x2="60.96" y2="-25.4" width="0.1524" layer="91"/>
-<label x="60.96" y="-25.4" size="1.778" layer="95"/>
+<wire x1="71.12" y1="-27.94" x2="55.88" y2="-27.94" width="0.1524" layer="91"/>
+<label x="55.88" y="-27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RESET" class="0">
 <segment>
 <pinref part="SV1" gate="1" pin="2"/>
-<wire x1="76.2" y1="-27.94" x2="60.96" y2="-27.94" width="0.1524" layer="91"/>
-<label x="60.96" y="-27.94" size="1.778" layer="95"/>
+<wire x1="71.12" y1="-30.48" x2="55.88" y2="-30.48" width="0.1524" layer="91"/>
+<label x="55.88" y="-30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="PC6(/RESET)"/>
@@ -27055,8 +27052,8 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="3"/>
-<wire x1="91.44" y1="-25.4" x2="106.68" y2="-25.4" width="0.1524" layer="91"/>
-<label x="96.52" y="-25.4" size="1.778" layer="95"/>
+<wire x1="86.36" y1="-27.94" x2="101.6" y2="-27.94" width="0.1524" layer="91"/>
+<label x="91.44" y="-27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -27162,27 +27159,23 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </segment>
 <segment>
 <pinref part="S1" gate="1" pin="S1"/>
-<wire x1="129.54" y1="30.48" x2="129.54" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="33.02" x2="129.54" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="35.56" x2="127" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="30.48" x2="129.54" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
 <wire x1="127" y1="35.56" x2="129.54" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="50.8" x2="129.54" y2="35.56" width="0.1524" layer="91"/>
 <junction x="129.54" y="35.56"/>
-<pinref part="S2" gate="1" pin="S"/>
-<wire x1="116.84" y1="30.48" x2="116.84" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="35.56" x2="119.38" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="S2" gate="1" pin="S1"/>
-<wire x1="119.38" y1="30.48" x2="119.38" y2="35.56" width="0.1524" layer="91"/>
-<junction x="119.38" y="35.56"/>
 <pinref part="S1" gate="1" pin="S"/>
 <wire x1="127" y1="30.48" x2="127" y2="35.56" width="0.1524" layer="91"/>
-<junction x="127" y="35.56"/>
 </segment>
 <segment>
 <pinref part="+3V6" gate="G$1" pin="+3V3"/>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="162.56" y1="-10.16" x2="162.56" y2="-12.7" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="+3V9" gate="G$1" pin="+3V3"/>
+<pinref part="R14" gate="G$1" pin="2"/>
+<wire x1="208.28" y1="50.8" x2="208.28" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CS" class="0">
@@ -27216,24 +27209,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <pinref part="D2" gate="1" pin="C"/>
 <wire x1="162.56" y1="25.4" x2="170.18" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="25.4" x2="170.18" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="S2" gate="1" pin="P1"/>
-<wire x1="119.38" y1="15.24" x2="119.38" y2="20.32" width="0.1524" layer="91"/>
-<pinref part="S2" gate="1" pin="P"/>
-<wire x1="116.84" y1="15.24" x2="116.84" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="15.24" x2="119.38" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="2"/>
-<wire x1="119.38" y1="15.24" x2="119.38" y2="10.16" width="0.1524" layer="91"/>
-<junction x="119.38" y="15.24"/>
-<pinref part="IC1" gate="G$1" pin="PC4(ADC4/SDA)"/>
-<wire x1="22.86" y1="20.32" x2="83.82" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="20.32" x2="83.82" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="17.78" x2="83.82" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="15.24" x2="116.84" y2="15.24" width="0.1524" layer="91"/>
-<junction x="116.84" y="15.24"/>
 </segment>
 </net>
 <net name="IGN_CTL" class="0">
@@ -27283,6 +27258,12 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <wire x1="22.86" y1="2.54" x2="43.18" y2="2.54" width="0.1524" layer="91"/>
 <label x="38.1" y="2.54" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="R14" gate="G$1" pin="1"/>
+<wire x1="208.28" y1="30.48" x2="208.28" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="25.4" x2="182.88" y2="25.4" width="0.1524" layer="91"/>
+<label x="182.88" y="25.4" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="QS-" class="0">
 <segment>
@@ -27291,8 +27272,14 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <wire x1="162.56" y1="-27.94" x2="144.78" y2="-27.94" width="0.1524" layer="91"/>
 <label x="144.78" y="-27.94" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="182.88" y1="22.86" x2="208.28" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="GND22" gate="1" pin="GND"/>
+<wire x1="208.28" y1="22.86" x2="208.28" y2="7.62" width="0.1524" layer="91"/>
+<label x="182.88" y="22.86" size="1.778" layer="95"/>
+</segment>
 </net>
-<net name="IGN0_IN" class="0">
+<net name="IGN0" class="0">
 <segment>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="162.56" y1="40.64" x2="162.56" y2="53.34" width="0.1524" layer="91"/>
@@ -28150,10 +28137,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <instance part="H1" gate="G$1" x="7.62" y="10.16">
 <attribute name="NAME" x="9.652" y="10.7442" size="1.778" layer="95"/>
 <attribute name="VALUE" x="9.652" y="7.6962" size="1.778" layer="96"/>
-</instance>
-<instance part="H2" gate="G$1" x="7.62" y="2.54">
-<attribute name="NAME" x="9.652" y="3.1242" size="1.778" layer="95"/>
-<attribute name="VALUE" x="9.652" y="0.0762" size="1.778" layer="96"/>
 </instance>
 <instance part="H3" gate="G$1" x="7.62" y="-5.08">
 <attribute name="NAME" x="9.652" y="-4.4958" size="1.778" layer="95"/>
