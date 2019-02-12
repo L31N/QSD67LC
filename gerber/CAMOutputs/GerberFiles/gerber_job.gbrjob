@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2019-02-12T12:36:02Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.3.0"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "k-line-adapter"
+        },
+        "Owner": "Daniel Belles <daniel.belles@student.kit.edu>",
+        "Size": {
+            "X": 76.18,
+            "Y": 41.58
+        }
+    }
+}
