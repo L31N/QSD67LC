@@ -166,16 +166,19 @@ int main () {
 
 
         /** SHIFT MODE **** */
-        if (fenabled && shiftSensor() && rpm_frequency > (lower_threshold*1000)) {
-            setLed(STATUS_LED_ENABLED, false);
-            setIgnition(false);
-            for (unsigned int i = 0; i < shifttime_ms[rpmToIndex(rpm_frequency)]; i++) _delay_ms(1);
-            setIgnition(true);
-            for (unsigned int i = 0; i < disabletime_ms; i++) _delay_ms(1);
-            setLed(STATUS_LED_ENABLED, true);
+        if (rpm_frequency > lower_threshold * 1000) {
+            if (fenabled && shiftSensor() && rpm_frequency > (lower_threshold*1000)) {
+                setLed(STATUS_LED_ENABLED, false);
+                setIgnition(false);
+                for (unsigned int i = 0; i < shifttime_ms[rpmToIndex(rpm_frequency)]; i++) _delay_ms(1);
+                setIgnition(true);
+                for (unsigned int i = 0; i < disabletime_ms; i++) _delay_ms(1);
+                setLed(STATUS_LED_ENABLED, true);
+            }
+            setLed(STATUS_LED_ENABLED, fenabled);
+        } else {
+            setLed(STATUS_LED_ENABLED, false);  // rpm to low
         }
-
-        setLed(STATUS_LED_ENABLED, fenabled);
     }
 }
 
