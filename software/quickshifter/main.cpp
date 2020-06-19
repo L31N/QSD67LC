@@ -12,15 +12,33 @@ const unsigned int STATUS_LED_BLUE  = 0;
 const unsigned int STATUS_LED_GREEN = 1;
 const unsigned int STATUS_LED_RED   = 2;
 
+const unsigned char CMD_DISABLE         = 0x01;
+const unsigned char CMD_ENDABLE         = 0x02;
+const unsigned char CMD_SET_SHIFT       = 0x04;
+const unsigned char CMD_GET_SHIFT       = 0x08;
+const unsigned char CMD_GET_RPM         = 0x10;
+const unsigned char CMD_PRINT_RPM       = 0x20;
+
+const unsigned char CMD_RESET           = 0xFF;
+
+
+// RPM_FACTOR = CPU_CLOCK * 60 s/m / (PRESCALER * 2^(timer_width)) / 2 (unsure where this 2 comes from)
+const double RPM_FACTOR = F_CPU * 60 / (256 * pow(2,16)) / 2;
+
+
 void init();
 bool button();
 bool shiftSensor();
 void setLed(unsigned char led, bool value);
 void toggleLed(unsigned char led);
 void setIgnition(bool value);
-void printShifttime(unsigned char shifttime);
 
+void printSetupMode();
+void printShifttime(unsigned char shifttime);
 void printRPM(unsigned int rpm);
+void printError(char* errorstr);
+
+bool readCommand(unsigned char& cmd, unsigned char& value);
 
 volatile unsigned int rpm_frequency;
 volatile unsigned int rpm_slope_count;
@@ -29,7 +47,7 @@ ISR(TIMER1_OVF_vect)
 {
     toggleLed(STATUS_LED_GREEN);
     // do the RPM frequency calculation here and update volatile variable
-    rpm_frequency = rpm_slope_count / 60 / (F_CPU / 1024 / 255);
+    rpm_frequency = rpm_slope_count * RPM_FACTOR;
     rpm_slope_count = 0;
 }
 
@@ -42,39 +60,45 @@ int main () {
 
     init();
 
-    bool setupMode = false;
+    bool fenabled = true;
+    bool fsetupMode = false;
+
     unsigned int shifttime_ms = 85;
     unsigned int disabletime_ms = 1000;
 
     while (true) {
         /** SETUP MODE **** */
-        if (button() && !setupMode) {   // enter setup mode
-            setupMode = true;
-            setLed(STATUS_LED_GREEN, true);
+        if (button() && !fsetupMode) {   // enter setup mode
+            fsetupMode = true;
+            setLed(STATUS_LED_BLUE, false);
 
-            printShifttime(shifttime_ms);
+            _delay_ms(1000);    // debunce button
 
-            while(true) {
-                if (button()) printShifttime(shifttime_ms);
+            printSetupMode();
+
+            unsigned char cmd;
+            unsigned char cmdvalue;
+            if (readCommand(cmd, cmdvalue)) {
+                if (cmd == CMD_DISABLE) {
+
+                }
+            } else {
+                // could not read uart command
+                printError("Error while receiving command");
             }
         }
 
-        // print RPM
-        printRPM(rpm_slope_count);
-        _delay_ms(100);
-
-
         /** SHIFT MODE **** */
-//        if (shiftSensor()) {
-//            setLed(STATUS_LED_RED, true);
-//            setLed(STATUS_LED_GREEN, true);
-//            setIgnition(false);
-//            for (int i = 0; i < shifttime_ms; i++) _delay_ms(1);
-//            setIgnition(true);
-//            setLed(STATUS_LED_GREEN, false);
-//            for (int i = 0; i < disabletime_ms; i++) _delay_ms(1);
-//            setLed(STATUS_LED_RED, false);
-//        }
+        if (shiftSensor()) {
+            setLed(STATUS_LED_RED, true);
+            setLed(STATUS_LED_GREEN, true);
+            setIgnition(false);
+            for (unsigned int i = 0; i < shifttime_ms; i++) _delay_ms(1);
+            setIgnition(true);
+            setLed(STATUS_LED_GREEN, false);
+            for (unsigned int i = 0; i < disabletime_ms; i++) _delay_ms(1);
+            setLed(STATUS_LED_RED, false);
+        }
     }
 }
 
@@ -111,8 +135,8 @@ void init() {
     rpm_frequency = 0;
 
     // timer settings for RPM detection (TCNT1 => 16 bit timer)
-    //TCCR1B |= (1 << CS12);                  // prescaler: 256
-    TCCR1B |= (1 << CS11)|(1 << CS10);      // prescaler: 64
+    TCCR1B |= (1 << CS12);                  // prescaler: 256
+    //TCCR1B |= (1 << CS11)|(1 << CS10);      // prescaler: 64
     //TCCR1B |= (1 << CS12)|(1 << CS10);    // prescaler: 1024
     TCNT1 = 0;                              // initialize counter
 
@@ -164,11 +188,15 @@ void setIgnition(bool value) {
     }
 }
 
-void printShifttime(unsigned char shifttime) {
+void printSetupMode() {
     uart_puts("\r#################################\n");
     uart_puts("\r# Welcome to QSD67LC Setup Mode #\n");
     uart_puts("\r#################################\n\n");
 
+    uart_puts("\rplease enter command: ");
+}
+
+void printShifttime(unsigned char shifttime) {
     char strbuf[4];
     itoa(shifttime, strbuf, 10);
 
@@ -179,11 +207,17 @@ void printShifttime(unsigned char shifttime) {
 }
 
 void printRPM(unsigned int rpm) {
-    char strbuf[6];
+    char strbuf[16];
     itoa(rpm, strbuf, 10);
 
     uart_puts("\rRPM [");
     uart_puts(strbuf);
     uart_puts("]\n");
+}
+
+void printError(char* errorStr) {
+    uart_puts("Error: ");
+    uart_puts(errorStr);
+    uart_puts("\n");
 }
 
