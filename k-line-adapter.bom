@@ -1,0 +1,25 @@
+Partlist exported from /media/data/dev/projects/QSD67LC/k-line-adapter.sch at 15.02.19 18:04
+
+Part  Value       Device                 Package      Description                                      MF    MPN         OC_FARNELL OC_NEWARK SPICEPREFIX
+C5    1uF         C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+C6    1uF         C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+C7    1uF         C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+C8    1uF         C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+C11   1uF         C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+C14   100uF       CPOL-EUE5-10.5         E5-10,5      POLARIZED CAPACITOR, European symbol                                                    C          
+C15   1000uF      CPOL-EUE5-10.5         E5-10,5      POLARIZED CAPACITOR, European symbol                                                    C          
+C16   100nF       C-EUC0805              C0805        CAPACITOR, European symbol                                                              C          
+D6    1N5822      SCHOTTKY-DIODEDO201T15 DO201T15     Schottky Diode                                                                                     
+IC3   MAX3232CPE  MAX3232CPE             DIL16        True RS-232 Transceivers 3.0V to 5.5V, Low-Power MAXIM MAX3232CPE+ 9724494    68K4626              
+IC5   LM2576S-5.0 LM2576S                TO263-5      National Semiconductor 3.0A "Simple Switcher"(c)                                                   
+JP1               PINHD-2X8              2X08         PIN HEADER                                                                                         
+L2    100uH       L-LEU-09HCP            09HCP                                                                                                           
+LED13 blue        LEDCHIP-LED0805        CHIP-LED0805 LED                                                                                                
+R1    510R        R-EU_R0805             R0805        RESISTOR, European symbol                                                               R          
+R2    2k2         R-EU_R0805             R0805        RESISTOR, European symbol                                                               R          
+R3    47k         R-EU_R0805             R0805        RESISTOR, European symbol                                                               R          
+R4    33k         R-EU_R0805             R0805        RESISTOR, European symbol                                                               R          
+R25   330R        R-EU_R0805             R0805        RESISTOR, European symbol                                                               R          
+T1    BC847C      BC847C-NPN-SOT23-BEC   SOT23-BEC    NPN Transistror                                                                                    
+X1                M09HP                  M09HP        SUB-D                                                              unknown    unknown              
+X2    RS232       F09HP                  F09HP        SUB-D                                                              unknown    unknown              

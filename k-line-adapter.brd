@@ -3,7 +3,7 @@
 <eagle version="9.3.0">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -2110,12 +2110,12 @@ design rules under a new name.</description>
 <attribute name="NAME" x="34.29" y="17.145" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="36.83" y="11.811" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="IC3" library="maxim" library_urn="urn:adsk.eagle:library:269" package="DIL16" package3d_urn="urn:adsk.eagle:package:922/2" value="MAX3232CPE" x="55.88" y="20.32" smashed="yes" rot="R90">
+<element name="IC3" library="maxim" library_urn="urn:adsk.eagle:library:269" package="DIL16" package3d_urn="urn:adsk.eagle:package:922/2" value="MAX232" x="55.88" y="20.32" smashed="yes" rot="R90">
 <attribute name="MF" value="MAXIM" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MPN" value="MAX3232CPE+" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="MAX232ACPE+" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="58.801" y="9.779" size="1.27" layer="25" ratio="10" rot="R180"/>
-<attribute name="OC_FARNELL" value="9724494" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="OC_NEWARK" value="68K4626" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="OC_FARNELL" value="9723773" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="OC_NEWARK" value="68K4544" x="113.03" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="56.515" y="12.827" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
 <element name="IC5" library="v-reg-3" package="TO263-5" value="LM2576S-5.0" x="22.86" y="30.48" smashed="yes">
@@ -2440,11 +2440,11 @@ design rules under a new name.</description>
 </signal>
 </signals>
 <mfgpreviewcolors>
-<mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
+<mfgpreviewcolor name="soldermaskcolor" color="0xC8FF0000"/>
 <mfgpreviewcolor name="silkscreencolor" color="0xFFFEFEFE"/>
-<mfgpreviewcolor name="backgroundcolor" color="0xFF282828"/>
+<mfgpreviewcolor name="backgroundcolor" color="0xFF000000"/>
 <mfgpreviewcolor name="coppercolor" color="0xFFFFBF00"/>
-<mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
+<mfgpreviewcolor name="substratecolor" color="0xFFAA0000"/>
 </mfgpreviewcolors>
 </board>
 </drawing>

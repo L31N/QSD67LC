@@ -19,6 +19,8 @@ void setLed(unsigned char led, bool value);
 void setIgnition(bool value);
 void printShifttime(unsigned char shifttime);
 
+void printRPM(unsigned int rpm);
+
 volatile unsigned int rpm_frequency;
 volatile unsigned int rpm_slope_count;
 
@@ -53,6 +55,10 @@ int main () {
                 if (button()) printShifttime(shifttime_ms);
             }
         }
+
+        // print RPM
+        printRPM(rpm_frequency);
+        _delay_ms(100);
 
 
         /** SHIFT MODE **** */
@@ -160,5 +166,14 @@ void printShifttime(unsigned char shifttime) {
     uart_puts("\rSHIFT-TIME (ms): [");
     uart_puts(strbuf);
     uart_puts("]");
+}
+
+void printRPM(unsigned int rpm) {
+    char strbuf[6];
+    itoa(rpm, strbuf, 10);
+
+    uart_puts("\rRPM [");
+    uart_puts(strbuf);
+    uart_puts("]\n");
 }
 

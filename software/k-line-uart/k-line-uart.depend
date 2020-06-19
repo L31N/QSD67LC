@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1553848906 source:/media/data/dev/projects/QSD67LC/software/k-line-uart/main.cpp
+	<avr/io.h>
+	<util/delay.h>
+	<stdlib.h>
+	<avr/interrupt.h>
+	"suart.h"
+
+1420991130 /media/data/dev/projects/QSD67LC/software/k-line-uart/uart.h
+	<avr/pgmspace.h>
+
+1541351994 source:/media/data/dev/projects/QSD67LC/software/k-line-uart/uart.cpp
+	<avr/io.h>
+	<avr/interrupt.h>
+	<avr/pgmspace.h>
+	"uart.h"
+
+1553782313 /media/data/dev/projects/QSD67LC/software/k-line-uart/suart.h
+
+1553849042 source:/media/data/dev/projects/QSD67LC/software/k-line-uart/suart.cpp
+	<avr/io.h>
+	<avr/interrupt.h>
+	"suart.h"
+
