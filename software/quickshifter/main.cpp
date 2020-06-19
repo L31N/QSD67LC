@@ -3,14 +3,16 @@
 #include <util/delay.h>
 #include <stdlib.h>
 
+#include <avr/eeprom.h>
+
 #include <avr/interrupt.h>
 #include "uart.h"
 
 #define UART_BAUD_RATE      9600
 
-const unsigned int STATUS_LED_BLUE  = 0;
-const unsigned int STATUS_LED_GREEN = 1;
-const unsigned int STATUS_LED_RED   = 2;
+const unsigned int STATUS_LED_ENABLED   = 0; // blue
+const unsigned int STATUS_LED_SETUPMODE = 1; // green
+const unsigned int STATUS_LED_SPARK     = 2; // red
 
 const unsigned char CMD_NULL            = 0x00;
 const unsigned char CMD_DISABLE         = 0x01;
@@ -20,7 +22,12 @@ const unsigned char CMD_GET_SHIFT       = 0x08;
 const unsigned char CMD_GET_RPM         = 0x10;
 const unsigned char CMD_PRINT_RPM       = 0x20;
 
+const unsigned char CMD_SETUP           = 0xF0;
 const unsigned char CMD_RESET           = 0xFF;
+
+
+const unsigned char EEPROM_ADDRESS_ENABLED      = 0x01;
+const unsigned char EEPROM_ADDRESS_SHIFT_TIME   = 0x02;
 
 
 // RPM_FACTOR = CPU_CLOCK * 60 s/m / (PRESCALER * 2^(timer_width)) / 2 (unsure where this 2 comes from)
@@ -39,14 +46,22 @@ void printShifttime(unsigned char shifttime);
 void printRPM(unsigned int rpm);
 void printError(char* errorstr);
 
+bool readSetupModeEnable();
 bool readCommand(unsigned char& cmd, unsigned char& value);
 
 volatile unsigned int rpm_frequency;
 volatile unsigned int rpm_slope_count;
 
+
+
+bool fenabled = false;                  // will be overwritten with eeprom value
+bool fsetupMode = true;
+
+unsigned char shifttime_ms = 85;        // will be overwritten with eeprom value
+unsigned int disabletime_ms = 1000;
+
 ISR(TIMER1_OVF_vect)
 {
-    toggleLed(STATUS_LED_GREEN);
     // do the RPM frequency calculation here and update volatile variable
     rpm_frequency = rpm_slope_count * RPM_FACTOR;
     rpm_slope_count = 0;
@@ -54,27 +69,18 @@ ISR(TIMER1_OVF_vect)
 
 ISR(INT1_vect) {
     rpm_slope_count++;
-    toggleLed(STATUS_LED_RED);
+    //toggleLed(STATUS_LED_SPARK);
 }
 
 int main () {
 
     init();
 
-    bool fenabled = true;
-    bool fsetupMode = false;
-
-    unsigned int shifttime_ms = 85;
-    unsigned int disabletime_ms = 1000;
-
     while (true) {
         /** SETUP MODE **** */
-        if (button() && !fsetupMode) {   // enter setup mode
+        if (readSetupModeEnable()) {
             fsetupMode = true;
-            setLed(STATUS_LED_BLUE, false);
-
-            _delay_ms(1000);    // debunce button
-
+            setLed(STATUS_LED_SETUPMODE, true);
             printSetupMode();
 
             while(fsetupMode) {
@@ -85,26 +91,27 @@ int main () {
                         case CMD_DISABLE:
                             uart_puts("\rquickshifter disabled ...\n");
                             fenabled = false;
+                            eeprom_write_byte((uint8_t*)EEPROM_ADDRESS_ENABLED, fenabled);
                             break;
 
                         case CMD_ENDABLE:
                             uart_puts("\rquickshifter enabled ...\n");
                             fenabled = true;
+                            eeprom_write_byte((uint8_t*)EEPROM_ADDRESS_ENABLED, fenabled);
                             break;
 
                         case CMD_SET_SHIFT:
                             shifttime_ms = cmdvalue;
+                            eeprom_write_byte((uint8_t*)EEPROM_ADDRESS_SHIFT_TIME, shifttime_ms);
                             uart_puts("\rshifttime changed\n");
                             printShifttime(shifttime_ms);
                             break;
 
                         case CMD_GET_SHIFT:
-                            uart_putc(shifttime_ms);
                             printShifttime(shifttime_ms);
                             break;
 
                         case CMD_GET_RPM:
-                            uart_putc(rpm_frequency);
                             printRPM(rpm_frequency);
                             break;
 
@@ -116,7 +123,7 @@ int main () {
                             break;
 
                         case CMD_RESET:
-                            uart_puts("leaving setup mode");
+                            uart_puts("\rleaving setup mode");
                             fsetupMode = false;
                             break;
                     }
@@ -125,19 +132,21 @@ int main () {
                     printError((char*)"Error while receiving command");
                 }
             }
+            setLed(STATUS_LED_SETUPMODE, false);
         }
+
 
         /** SHIFT MODE **** */
         if (fenabled && shiftSensor()) {
-            setLed(STATUS_LED_RED, true);
-            setLed(STATUS_LED_GREEN, true);
+            setLed(STATUS_LED_ENABLED, false);
             setIgnition(false);
             for (unsigned int i = 0; i < shifttime_ms; i++) _delay_ms(1);
             setIgnition(true);
-            setLed(STATUS_LED_GREEN, false);
             for (unsigned int i = 0; i < disabletime_ms; i++) _delay_ms(1);
-            setLed(STATUS_LED_RED, false);
+            setLed(STATUS_LED_ENABLED, true);
         }
+
+        setLed(STATUS_LED_ENABLED, fenabled);
     }
 }
 
@@ -192,6 +201,26 @@ void init() {
 
     PORTB &= ~(1 << 0);                              // HC-05 Reset off
     PORTB |= (1 << 0);
+
+
+
+    /// read settings from eeprom
+    fenabled = eeprom_read_byte((uint8_t*)EEPROM_ADDRESS_ENABLED);
+    shifttime_ms = eeprom_read_byte((uint8_t*)EEPROM_ADDRESS_SHIFT_TIME);
+
+    /// disable all LEDs
+    setLed(STATUS_LED_ENABLED, false);
+    setLed(STATUS_LED_SETUPMODE, false);
+    setLed(STATUS_LED_SPARK, false);
+
+    /*_delay_ms(1000);
+    setLed(STATUS_LED_ENABLED, true);
+    _delay_ms(1000);
+    setLed(STATUS_LED_ENABLED, false);
+    setLed(STATUS_LED_SETUPMODE, true);
+    _delay_ms(1000);
+    setLed(STATUS_LED_SETUPMODE, false);
+    setLed(STATUS_LED_SPARK, true);*/
 }
 
 bool button() {
@@ -199,9 +228,6 @@ bool button() {
 }
 
 bool shiftSensor() {
-    //return (button() || !(PIND & (1 << 2)));
-
-    //return button();
     return (PIND & (1 << 2));
 }
 
@@ -232,7 +258,7 @@ void printSetupMode() {
     uart_puts("\r# Welcome to QSD67LC Setup Mode #\n");
     uart_puts("\r#################################\n\n");
 
-    uart_puts("\rplease enter command: ");
+    uart_puts("\rplease enter command:\n");
 }
 
 void printShifttime(unsigned char shifttime) {
@@ -242,7 +268,7 @@ void printShifttime(unsigned char shifttime) {
 
     uart_puts("\rSHIFT-TIME (ms): [");
     uart_puts(strbuf);
-    uart_puts("]");
+    uart_puts("]\n");
 }
 
 void printRPM(unsigned int rpm) {
@@ -258,6 +284,12 @@ void printError(char* errorStr) {
     uart_puts("Error: ");
     uart_puts(errorStr);
     uart_puts("\n");
+}
+
+bool readSetupModeEnable() {
+    unsigned int cmdbytes = uart_getc();
+    if (cmdbytes == CMD_SETUP) return true;
+    else return false;
 }
 
 bool readCommand(unsigned char& cmd, unsigned char& value) {
