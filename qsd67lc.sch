@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.2.1">
+<eagle version="9.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -26684,8 +26684,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="C19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="JP2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X1" device="" package3d_urn="urn:adsk.eagle:package:22485/2"/>
@@ -26693,7 +26691,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
-<part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -26945,13 +26942,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <instance part="GND19" gate="1" x="170.18" y="5.08" smashed="yes">
 <attribute name="VALUE" x="167.64" y="2.54" size="1.778" layer="96"/>
 </instance>
-<instance part="R14" gate="G$1" x="208.28" y="35.56" smashed="yes" rot="R90">
-<attribute name="NAME" x="206.7814" y="31.75" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="211.582" y="31.75" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V9" gate="G$1" x="208.28" y="53.34" smashed="yes">
-<attribute name="VALUE" x="205.74" y="48.26" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="C19" gate="G$1" x="-48.26" y="-15.24" smashed="yes">
 <attribute name="NAME" x="-46.736" y="-14.859" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-46.736" y="-19.939" size="1.778" layer="96"/>
@@ -26976,9 +26966,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 </instance>
 <instance part="P+5" gate="1" x="256.54" y="35.56" smashed="yes">
 <attribute name="VALUE" x="254" y="30.48" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="GND22" gate="1" x="208.28" y="5.08" smashed="yes">
-<attribute name="VALUE" x="205.74" y="2.54" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -27061,12 +27048,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <pinref part="GND23" gate="1" pin="GND"/>
 <pinref part="JP4" gate="G$1" pin="1"/>
 <wire x1="266.7" y1="12.7" x2="266.7" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="182.88" y1="22.86" x2="208.28" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="22.86" x2="208.28" y2="7.62" width="0.1524" layer="91"/>
-<label x="182.88" y="22.86" size="1.778" layer="95"/>
-<pinref part="GND22" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="RXD" class="0">
@@ -27270,11 +27251,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <wire x1="162.56" y1="-10.16" x2="162.56" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="+3V9" gate="G$1" pin="+3V3"/>
-<pinref part="R14" gate="G$1" pin="2"/>
-<wire x1="208.28" y1="50.8" x2="208.28" y2="40.64" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
 <pinref part="JP2" gate="G$1" pin="1"/>
 <wire x1="248.92" y1="33.02" x2="248.92" y2="22.86" width="0.1524" layer="91"/>
@@ -27359,12 +27335,6 @@ Source: http://focus.ti.com/lit/ds/symlink/iso7221a.pdf</description>
 <pinref part="IC1" gate="G$1" pin="PD2(INT0)"/>
 <wire x1="22.86" y1="2.54" x2="43.18" y2="2.54" width="0.1524" layer="91"/>
 <label x="38.1" y="2.54" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R14" gate="G$1" pin="1"/>
-<wire x1="208.28" y1="30.48" x2="208.28" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="25.4" x2="182.88" y2="25.4" width="0.1524" layer="91"/>
-<label x="182.88" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="QS-" class="0">
