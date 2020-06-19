@@ -16,6 +16,7 @@ void init();
 bool button();
 bool shiftSensor();
 void setLed(unsigned char led, bool value);
+void toggleLed(unsigned char led);
 void setIgnition(bool value);
 void printShifttime(unsigned char shifttime);
 
@@ -24,8 +25,9 @@ void printRPM(unsigned int rpm);
 volatile unsigned int rpm_frequency;
 volatile unsigned int rpm_slope_count;
 
-ISR(TIMER0_OVF_vect)
+ISR(TIMER1_OVF_vect)
 {
+    toggleLed(STATUS_LED_GREEN);
     // do the RPM frequency calculation here and update volatile variable
     rpm_frequency = rpm_slope_count / 60 / (F_CPU / 1024 / 255);
     rpm_slope_count = 0;
@@ -33,6 +35,7 @@ ISR(TIMER0_OVF_vect)
 
 ISR(INT1_vect) {
     rpm_slope_count++;
+    toggleLed(STATUS_LED_RED);
 }
 
 int main () {
@@ -57,7 +60,7 @@ int main () {
         }
 
         // print RPM
-        printRPM(rpm_frequency);
+        printRPM(rpm_slope_count);
         _delay_ms(100);
 
 
@@ -80,6 +83,7 @@ void init() {
     DDRC &= ~(1 << 5);  // button as input
 
     DDRD &= ~(1 << 2);  // shift sensor as input
+    //DDRD &= ~(1 << 3);  // RPM interrupt as input
 
     DDRD |= (1 << 7);   // IGN_CTL as output
 
@@ -106,11 +110,13 @@ void init() {
     rpm_slope_count = 0;
     rpm_frequency = 0;
 
-    // timer settings for RPM detection
-    TCCR0 |= (1 << CS02)|(1 << CS00);   // prescaler: 1024
-    TCNT0 = 0;                          // initialize counter
+    // timer settings for RPM detection (TCNT1 => 16 bit timer)
+    //TCCR1B |= (1 << CS12);                  // prescaler: 256
+    TCCR1B |= (1 << CS11)|(1 << CS10);      // prescaler: 64
+    //TCCR1B |= (1 << CS12)|(1 << CS10);    // prescaler: 1024
+    TCNT1 = 0;                              // initialize counter
 
-    TIMSK |= (1 << TOIE0);              // enable timer overflow interrupt for timer0
+    TIMSK |= (1 << TOIE1);                  // enable timer overflow interrupt for timer1
 
 
     // set ignition on for default
@@ -143,6 +149,10 @@ void setLed(unsigned char led, bool value) {
     else {
         PORTC |= (1 << led);
     }
+}
+
+void toggleLed(unsigned char led) {
+    PORTC ^= (1 << led);
 }
 
 void setIgnition(bool value) {

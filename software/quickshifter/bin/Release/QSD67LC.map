@@ -132,7 +132,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x450
+.text           0x0000000000000000      0x4aa
  *(.vectors)
  .vectors       0x0000000000000000       0x26 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
                 0x0000000000000000                __vectors
@@ -198,109 +198,110 @@ END GROUP
                 0x000000000000005c                __vector_7
                 0x000000000000005c                __vector_5
                 0x000000000000005c                __vector_4
+                0x000000000000005c                __vector_9
                 0x000000000000005c                __vector_15
-                0x000000000000005c                __vector_8
                 0x000000000000005c                __vector_14
                 0x000000000000005c                __vector_10
                 0x000000000000005c                __vector_16
                 0x000000000000005c                __vector_18
- .text          0x000000000000005e      0x1ca obj/Release/main.o
-                0x000000000000005e                __vector_9
-                0x00000000000000ac                __vector_2
-                0x00000000000000da                _Z4initv
-                0x0000000000000148                _Z6buttonv
-                0x0000000000000152                _Z11shiftSensorv
-                0x000000000000015c                _Z6setLedhb
-                0x000000000000018e                _Z11setIgnitionb
-                0x000000000000019a                _Z14printShifttimeh
-                0x00000000000001ec                _Z8printRPMj
- .text          0x0000000000000228      0x15a obj/Release/uart.o
-                0x0000000000000228                __vector_11
-                0x0000000000000280                __vector_12
-                0x00000000000002ca                _Z9uart_initj
-                0x00000000000002f2                _Z9uart_getcv
-                0x000000000000032e                _Z9uart_putch
-                0x0000000000000350                _Z9uart_putsPKc
-                0x0000000000000366                _Z11uart_puts_pPKc
- .text          0x0000000000000382        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
- .text          0x0000000000000382        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
- .text          0x0000000000000382        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
- .text          0x0000000000000382        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
- .text          0x0000000000000382        0x0 /usr/lib/avr/lib//libc.a(itoa_ncheck.o)
- .text          0x0000000000000382        0x0 /usr/lib/avr/lib//libc.a(utoa_ncheck.o)
- .text          0x0000000000000382        0x0 /usr/lib/avr/lib//libc.a(strrev.o)
-                0x0000000000000382                . = ALIGN (0x2)
+ .text          0x000000000000005e      0x224 obj/Release/main.o
+                0x000000000000005e                _Z4initv
+                0x00000000000000ce                _Z6buttonv
+                0x00000000000000d8                _Z11shiftSensorv
+                0x00000000000000e2                _Z6setLedhb
+                0x0000000000000114                _Z9toggleLedh
+                0x0000000000000128                __vector_8
+                0x000000000000018e                __vector_2
+                0x00000000000001e8                _Z11setIgnitionb
+                0x00000000000001f4                _Z14printShifttimeh
+                0x0000000000000246                _Z8printRPMj
+ .text          0x0000000000000282      0x15a obj/Release/uart.o
+                0x0000000000000282                __vector_11
+                0x00000000000002da                __vector_12
+                0x0000000000000324                _Z9uart_initj
+                0x000000000000034c                _Z9uart_getcv
+                0x0000000000000388                _Z9uart_putch
+                0x00000000000003aa                _Z9uart_putsPKc
+                0x00000000000003c0                _Z11uart_puts_pPKc
+ .text          0x00000000000003dc        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/avr/lib//libc.a(itoa_ncheck.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/avr/lib//libc.a(utoa_ncheck.o)
+ .text          0x00000000000003dc        0x0 /usr/lib/avr/lib//libc.a(strrev.o)
+                0x00000000000003dc                . = ALIGN (0x2)
  *(.text.*)
- .text.startup  0x0000000000000382       0x34 obj/Release/main.o
-                0x0000000000000382                main
+ .text.startup  0x00000000000003dc       0x34 obj/Release/main.o
+                0x00000000000003dc                main
  .text.libgcc.mul
-                0x00000000000003b6        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000410        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.div
-                0x00000000000003b6       0x28 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
-                0x00000000000003b6                __udivmodhi4
- .text.libgcc   0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000410       0x28 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000410                __udivmodhi4
+ .text.libgcc   0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.prologue
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.builtins
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.fmul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.fixed
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_udivmodhi4.o)
  .text.libgcc.mul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
- .text.libgcc   0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x00000000000003de        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
+                0x0000000000000438        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_clear_bss.o)
  .text.avr-libc
-                0x00000000000003de       0x14 /usr/lib/avr/lib//libc.a(itoa_ncheck.o)
-                0x00000000000003de                __itoa_ncheck
+                0x0000000000000438       0x14 /usr/lib/avr/lib//libc.a(itoa_ncheck.o)
+                0x0000000000000438                __itoa_ncheck
  .text.avr-libc
-                0x00000000000003f2       0x36 /usr/lib/avr/lib//libc.a(utoa_ncheck.o)
-                0x00000000000003f2                __utoa_ncheck
-                0x00000000000003f4                __utoa_common
+                0x000000000000044c       0x36 /usr/lib/avr/lib//libc.a(utoa_ncheck.o)
+                0x000000000000044c                __utoa_ncheck
+                0x000000000000044e                __utoa_common
  .text.avr-libc
-                0x0000000000000428       0x24 /usr/lib/avr/lib//libc.a(strrev.o)
-                0x0000000000000428                strrev
-                0x000000000000044c                . = ALIGN (0x2)
+                0x0000000000000482       0x24 /usr/lib/avr/lib//libc.a(strrev.o)
+                0x0000000000000482                strrev
+                0x00000000000004a6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000000000044c        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
-                0x000000000000044c                exit
-                0x000000000000044c                _exit
+ .fini9         0x00000000000004a6        0x0 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+                0x00000000000004a6                exit
+                0x00000000000004a6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -319,11 +320,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000000000044c        0x4 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
+ .fini0         0x00000000000004a6        0x4 /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000450                _etext = .
+                0x00000000000004aa                _etext = .
 
-.data           0x0000000000801100       0x8e load address 0x0000000000000450
+.data           0x0000000000801100       0x8e load address 0x00000000000004aa
                 0x0000000000801100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000801100        0x0 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
@@ -365,8 +366,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x00000000008011d7                PROVIDE (__bss_end, .)
-                0x0000000000000450                __data_load_start = LOADADDR (.data)
-                0x00000000000004de                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000004aa                __data_load_start = LOADADDR (.data)
+                0x0000000000000538                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008011d7        0x0
                 0x00000000008011d7                PROVIDE (__noinit_start, .)
@@ -499,6 +500,7 @@ _Z4initv                                          obj/Release/main.o
 _Z6buttonv                                        obj/Release/main.o
 _Z6setLedhb                                       obj/Release/main.o
 _Z8printRPMj                                      obj/Release/main.o
+_Z9toggleLedh                                     obj/Release/main.o
 _Z9uart_getcv                                     obj/Release/uart.o
 _Z9uart_initj                                     obj/Release/uart.o
                                                   obj/Release/main.o
@@ -545,9 +547,9 @@ __vector_4                                        /usr/lib/gcc/avr/4.9.2/../../.
 __vector_5                                        /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
 __vector_6                                        /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
 __vector_7                                        /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
-__vector_8                                        /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
-__vector_9                                        obj/Release/main.o
+__vector_8                                        obj/Release/main.o
                                                   /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
+__vector_9                                        /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
 __vector_default                                  /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
 __vectors                                         /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr4/crtatmega8.o
 _exit                                             /usr/lib/gcc/avr/4.9.2/avr4/libgcc.a(_exit.o)
