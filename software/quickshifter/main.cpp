@@ -12,6 +12,7 @@ const unsigned int STATUS_LED_BLUE  = 0;
 const unsigned int STATUS_LED_GREEN = 1;
 const unsigned int STATUS_LED_RED   = 2;
 
+const unsigned char CMD_NULL            = 0x00;
 const unsigned char CMD_DISABLE         = 0x01;
 const unsigned char CMD_ENDABLE         = 0x02;
 const unsigned char CMD_SET_SHIFT       = 0x04;
@@ -76,20 +77,58 @@ int main () {
 
             printSetupMode();
 
-            unsigned char cmd;
-            unsigned char cmdvalue;
-            if (readCommand(cmd, cmdvalue)) {
-                if (cmd == CMD_DISABLE) {
+            while(fsetupMode) {
+                unsigned char cmd;
+                unsigned char cmdvalue;
+                if (readCommand(cmd, cmdvalue)) {
+                    switch (cmd) {
+                        case CMD_DISABLE:
+                            uart_puts("\rquickshifter disabled ...\n");
+                            fenabled = false;
+                            break;
 
+                        case CMD_ENDABLE:
+                            uart_puts("\rquickshifter enabled ...\n");
+                            fenabled = true;
+                            break;
+
+                        case CMD_SET_SHIFT:
+                            shifttime_ms = cmdvalue;
+                            uart_puts("\rshifttime changed\n");
+                            printShifttime(shifttime_ms);
+                            break;
+
+                        case CMD_GET_SHIFT:
+                            uart_putc(shifttime_ms);
+                            printShifttime(shifttime_ms);
+                            break;
+
+                        case CMD_GET_RPM:
+                            uart_putc(rpm_frequency);
+                            printRPM(rpm_frequency);
+                            break;
+
+                        case CMD_PRINT_RPM:
+                            while(!button()) {
+                                printRPM(rpm_frequency);
+                                _delay_ms(1000);
+                            }
+                            break;
+
+                        case CMD_RESET:
+                            uart_puts("leaving setup mode");
+                            fsetupMode = false;
+                            break;
+                    }
+                } else {
+                    // could not read uart command
+                    printError((char*)"Error while receiving command");
                 }
-            } else {
-                // could not read uart command
-                printError("Error while receiving command");
             }
         }
 
         /** SHIFT MODE **** */
-        if (shiftSensor()) {
+        if (fenabled && shiftSensor()) {
             setLed(STATUS_LED_RED, true);
             setLed(STATUS_LED_GREEN, true);
             setIgnition(false);
@@ -219,5 +258,28 @@ void printError(char* errorStr) {
     uart_puts("Error: ");
     uart_puts(errorStr);
     uart_puts("\n");
+}
+
+bool readCommand(unsigned char& cmd, unsigned char& value) {
+    /// always receive two byte (cmd and cmdvalue)
+    _delay_ms(10);
+    unsigned int cmdbytes = uart_getc();
+    unsigned int valuebytes = uart_getc();
+
+    if ((cmdbytes & 0xFF00) == 0) {       // received new cmd
+        if ((valuebytes & 0xFF00) == 0) { // received new value bytes
+            cmd = (cmdbytes & 0xFF);
+            value = (valuebytes & 0xFF);
+            return true;
+        } else {
+            return false;
+        }
+    } else if ((cmdbytes & 0xFF00) == UART_NO_DATA) {
+        cmd = CMD_NULL;
+        value = 0;
+        return true;
+    } else {
+        return false;
+    }
 }
 
