@@ -134,7 +134,8 @@ int main () {
                         case CMD_PRINT_RPM:
                             while(!button()) {
                                 printRPM(rpm_frequency);
-                                _delay_ms(1000);
+                                _delay_ms(500);
+                                if (readCommand(cmd, cmdvalue, cmdvalue1) && cmd == CMD_PRINT_RPM) break;
                             }
                             break;
 
@@ -165,7 +166,7 @@ int main () {
 
 
         /** SHIFT MODE **** */
-        if (fenabled && !shiftSensor()) {
+        if (fenabled && shiftSensor() && rpm_frequency > (lower_threshold*1000)) {
             setLed(STATUS_LED_ENABLED, false);
             setIgnition(false);
             for (unsigned int i = 0; i < shifttime_ms[rpmToIndex(rpm_frequency)]; i++) _delay_ms(1);
@@ -234,6 +235,7 @@ void init() {
 
     /// read settings from eeprom
     fenabled = eeprom_read_byte((uint8_t*)EEPROM_ADDRESS_ENABLED);
+    lower_threshold = eeprom_read_byte((uint8_t*)EEPROM_ADDRESS_LOWER_THRESHOLD);
 
     for (unsigned int i = 0; i < 14; i++) {
         shifttime_ms[i] = eeprom_read_byte((uint8_t*)(EEPROM_ADDRESS_SHIFT_TIME[i]));
